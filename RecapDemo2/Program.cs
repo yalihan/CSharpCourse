@@ -11,24 +11,18 @@ namespace RecapDemo2
         static void Main(string[] args)
         {
             CustomerManager customerManager = new CustomerManager();
+            customerManager.iLogger = new DatabaseLogger();
             customerManager.Add();
             Console.ReadLine();
         }
     }
     class CustomerManager
     {
+        public ILogger iLogger { get; set; }
         public void Add()
         {
-            Logger logger = new Logger();
-            logger.Log();
+            iLogger.Log();
             Console.WriteLine("Customer Added");
-        }
-    }
-    class Logger
-    {
-        public void Log()
-        {
-            Console.WriteLine("Logged");
         }
     }
 }
