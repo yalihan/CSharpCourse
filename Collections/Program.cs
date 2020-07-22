@@ -17,7 +17,8 @@ namespace Collections
             //WorkingWithGenericCollections();
             //WorkingWithGenericCollectionsAdvance();
             //AddingElementToList();
-            SomeMethodsOfList();
+            //SomeMethodsOfList();
+            WorkingWithDictionary();
             Console.ReadLine();
         }
         class Customer
@@ -28,6 +29,27 @@ namespace Collections
             {
                 return "Id : " + Id + "\tFirst Name : " + FirstName;
             }
+        }
+        private static void WorkingWithDictionary()
+        {
+            Dictionary<string, string> dictionary = new Dictionary<string, string>();
+            dictionary.Add("Book", "Kitap");
+            dictionary.Add("Table", "Tablo");
+            dictionary.Add("Computer", "Bilgisayar");
+
+            Console.WriteLine(dictionary["Table"]);
+            foreach (var item in dictionary)
+            {
+                Console.WriteLine(item.Key+" = "+item.Value);
+            }
+
+            Console.WriteLine("Table var mi ? : " + dictionary.ContainsKey("Table"));
+            Console.WriteLine("glass var mi ? : " + dictionary.ContainsKey("Glass"));
+            Console.WriteLine("Kitap var mi ? : " + dictionary.ContainsValue("Kitap"));
+
+            Dictionary<int, string> dictionaryCustomer = new Dictionary<int, string>();
+            Customer customer = new Customer { Id = 1, FirstName = "Alihan" };
+            dictionaryCustomer.Add(customer.Id, customer.FirstName);
         }
         private static void SomeMethodsOfList()
         {
