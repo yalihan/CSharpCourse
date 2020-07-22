@@ -12,10 +12,30 @@ namespace ExceptionManagement
         {
             //ExceptionWithoutCatchParameter();
             //ExceptionWithCatchParameter();
-            WorkingOwnExceptionClass();
+            //WorkingOwnExceptionClass();
+            CatchingErrorWithActionDelegation(()=>FindingRecord());
             Console.ReadLine();
 
 
+        }
+        private static void CatchingErrorWithActionDelegation(Action action)
+        {
+            try
+            {
+                action.Invoke();
+            }
+            catch (RecordNotFoundException exception)
+            {
+                Console.WriteLine("RecordNotFoundException Calisti.\nHata Mesaji --> " + exception.Message);
+            }
+            catch (IndexOutOfRangeException exception)
+            {
+                Console.WriteLine("IndexOutOfRangeException Calisti.\nHata Mesaji --> " + exception.Message);
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine("Exception Calisti.\nHata Mesaji --> " + exception.Message);
+            }
         }
         private static void WorkingOwnExceptionClass()
         {
@@ -34,7 +54,7 @@ namespace ExceptionManagement
             List<string> students = new List<string> { "Alihan", "Merve", "Omer" };
             if (!students.Contains("Ahmet"))
             {
-                throw new RecordNotFoundException("Record not found");
+                throw new RecordNotFoundException("Record not Found");
             }
             else
             {
