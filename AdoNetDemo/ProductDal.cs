@@ -52,6 +52,18 @@ namespace AdoNetDemo
             sqlCommand.ExecuteNonQuery();
             _sqlConnection.Close();
         }
+        public void Update(Product product)
+        {
+            ConnectionControl();
+            SqlCommand sqlCommand = new SqlCommand(
+                "Update Products set Name=@name,UnitPrice=@unitPrice,StockAmount=@stockAmount where Id=@id", _sqlConnection);
+            sqlCommand.Parameters.AddWithValue("@id", product.Id);
+            sqlCommand.Parameters.AddWithValue("@name", product.Name);
+            sqlCommand.Parameters.AddWithValue("@unitPrice", product.UnitPrice);
+            sqlCommand.Parameters.AddWithValue("@stockAmount", product.StockAmount);
+            sqlCommand.ExecuteNonQuery();
+            _sqlConnection.Close();
+        }
         public DataTable GetAll2()
         {
             if (_sqlConnection.State == ConnectionState.Closed)
