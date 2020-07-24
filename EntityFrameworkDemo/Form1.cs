@@ -17,10 +17,22 @@ namespace EntityFrameworkDemo
             InitializeComponent();
         }
         ProductDal _productDal = new ProductDal();
+        
         private void LoadProducts()
         {
             dgwProducts.DataSource = _productDal.GetAll();
         }
+        private void SearchProductsByName(string key)
+        {
+            dgwProducts.DataSource = _productDal.GetByName(key);
+        }
+        private void SearchProductsByUnitPrice(decimal min,decimal max)
+        {
+            //decimal min = Convert.ToDecimal(tbxMinPrice.Text);
+            //decimal max = Convert.ToDecimal(tbxMaxPrice.Text);
+            dgwProducts.DataSource = _productDal.GetByUnitPrice(min,max);
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
             LoadProducts();
@@ -29,7 +41,7 @@ namespace EntityFrameworkDemo
         private void btnAdd_Click(object sender, EventArgs e)
         {
             _productDal.Add(new Product
-            { 
+            {
                 Name = tbxName.Text,
                 UnitPrice = Convert.ToDecimal(tbxUnitPrice.Text),
                 StockAmount = Convert.ToInt32(tbxStockAmount.Text)
@@ -37,7 +49,6 @@ namespace EntityFrameworkDemo
             LoadProducts();
 
         }
-
         private void btnUpdate_Click(object sender, EventArgs e)
         {
 
@@ -50,6 +61,14 @@ namespace EntityFrameworkDemo
             });
             LoadProducts();
         }
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            _productDal.Delete(new Product
+            {
+                Id = Convert.ToInt32(dgwProducts.CurrentRow.Cells[0].Value)
+            });
+            LoadProducts();
+        }
 
         private void dgwProducts_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -57,14 +76,9 @@ namespace EntityFrameworkDemo
             tbxUnitPrice.Text = dgwProducts.CurrentRow.Cells[2].Value.ToString();
             tbxStockAmount.Text = dgwProducts.CurrentRow.Cells[3].Value.ToString();
         }
-
-        private void btnDelete_Click(object sender, EventArgs e)
+        private void tbxSearch_TextChanged(object sender, EventArgs e)
         {
-            _productDal.Delete(new Product
-            {
-                Id= Convert.ToInt32(dgwProducts.CurrentRow.Cells[0].Value)
-            });
-            LoadProducts();
+            SearchProductsByName(tbxSearchName.Text);
         }
     }
 }

@@ -39,6 +39,9 @@
             this.lblUnitPriceAdd = new System.Windows.Forms.Label();
             this.lblNameAdd = new System.Windows.Forms.Label();
             this.dgwProducts = new System.Windows.Forms.DataGridView();
+            this.tbxSearchName = new System.Windows.Forms.TextBox();
+            this.lblSearchName = new System.Windows.Forms.Label();
+            this.lblTitle = new System.Windows.Forms.Label();
             this.gbxAdd.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgwProducts)).BeginInit();
             this.SuspendLayout();
@@ -54,16 +57,15 @@
             this.gbxAdd.Controls.Add(this.lblStockAmountAdd);
             this.gbxAdd.Controls.Add(this.lblUnitPriceAdd);
             this.gbxAdd.Controls.Add(this.lblNameAdd);
-            this.gbxAdd.Location = new System.Drawing.Point(1093, 12);
+            this.gbxAdd.Location = new System.Drawing.Point(915, 121);
             this.gbxAdd.Name = "gbxAdd";
-            this.gbxAdd.Size = new System.Drawing.Size(250, 426);
+            this.gbxAdd.Size = new System.Drawing.Size(255, 320);
             this.gbxAdd.TabIndex = 3;
             this.gbxAdd.TabStop = false;
-            this.gbxAdd.Text = "Add a Product";
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(128, 281);
+            this.btnDelete.Location = new System.Drawing.Point(76, 243);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(100, 44);
             this.btnDelete.TabIndex = 8;
@@ -73,7 +75,7 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(128, 221);
+            this.btnUpdate.Location = new System.Drawing.Point(128, 164);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(100, 44);
             this.btnUpdate.TabIndex = 7;
@@ -83,7 +85,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(128, 162);
+            this.btnAdd.Location = new System.Drawing.Point(19, 164);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(100, 44);
             this.btnAdd.TabIndex = 6;
@@ -146,19 +148,53 @@
             // 
             this.dgwProducts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgwProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgwProducts.Location = new System.Drawing.Point(12, 12);
+            this.dgwProducts.Location = new System.Drawing.Point(12, 61);
             this.dgwProducts.Name = "dgwProducts";
             this.dgwProducts.RowHeadersWidth = 51;
             this.dgwProducts.RowTemplate.Height = 24;
-            this.dgwProducts.Size = new System.Drawing.Size(1051, 426);
+            this.dgwProducts.Size = new System.Drawing.Size(888, 380);
             this.dgwProducts.TabIndex = 2;
             this.dgwProducts.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwProducts_CellClick);
+            // 
+            // tbxSearchName
+            // 
+            this.tbxSearchName.Location = new System.Drawing.Point(915, 81);
+            this.tbxSearchName.Name = "tbxSearchName";
+            this.tbxSearchName.Size = new System.Drawing.Size(255, 22);
+            this.tbxSearchName.TabIndex = 5;
+            this.tbxSearchName.TextChanged += new System.EventHandler(this.tbxSearch_TextChanged);
+            // 
+            // lblSearchName
+            // 
+            this.lblSearchName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblSearchName.AutoSize = true;
+            this.lblSearchName.Location = new System.Drawing.Point(912, 61);
+            this.lblSearchName.Name = "lblSearchName";
+            this.lblSearchName.Size = new System.Drawing.Size(53, 17);
+            this.lblSearchName.TabIndex = 6;
+            this.lblSearchName.Text = "Search";
+            this.lblSearchName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Arial Narrow", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lblTitle.Location = new System.Drawing.Point(528, 1);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(195, 57);
+            this.lblTitle.TabIndex = 7;
+            this.lblTitle.Text = "Products";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1355, 508);
+            this.ClientSize = new System.Drawing.Size(1182, 453);
+            this.Controls.Add(this.lblTitle);
+            this.Controls.Add(this.lblSearchName);
+            this.Controls.Add(this.tbxSearchName);
             this.Controls.Add(this.gbxAdd);
             this.Controls.Add(this.dgwProducts);
             this.Name = "Form1";
@@ -168,6 +204,7 @@
             this.gbxAdd.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgwProducts)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -184,6 +221,9 @@
         private System.Windows.Forms.Label lblUnitPriceAdd;
         private System.Windows.Forms.Label lblNameAdd;
         private System.Windows.Forms.DataGridView dgwProducts;
+        private System.Windows.Forms.TextBox tbxSearchName;
+        private System.Windows.Forms.Label lblSearchName;
+        private System.Windows.Forms.Label lblTitle;
     }
 }
 
