@@ -10,6 +10,5 @@ namespace EntityFrameworkDemo
     class ETradeContext : DbContext
     {
         public DbSet<Product> Products { get; set; }
-
     }
 }
